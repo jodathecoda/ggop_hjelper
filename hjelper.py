@@ -1,14 +1,36 @@
 import tkinter as tk
 
 def calculate_bets():
+    ggopbet_percent = 1
     stack = float(stack_entry.get())
     pot = float(pot_entry.get())
-    
-    flop_bet = pot * 0.5
-    turn_bet = pot * 0.75
+    print("---- FLOP ----")
+    print("Flop stacks: " + str(stack))
+    print("Flop Pot: " + str(pot))
+    #Flop:
+    ggopbet_percent = 0.5*((((pot + 2*stack)/pot)**(1.0/3)) - 1)
+    flop_bet = (ggopbet_percent * pot)
+    print("Flop Bet: " + str(flop_bet))
+    # for turn bet update stacks and pot:
+    stack = stack - flop_bet
+    pot = pot + 2*flop_bet
+    print("---- TURN ----")
+    print("Turn stacks: " + str(stack))
+    print("Turn Pot: " + str(pot))
+    #Turn:
+    ggopbet_percent = 0.5*((((pot + 2*stack)/pot)**(1.0/2)) - 1)
+    turn_bet = (ggopbet_percent * pot)
+    print("Turn Bet: " + str(turn_bet))
     
     flop_bet_label.config(text=f"FLOP: {flop_bet}")
     turn_bet_label.config(text=f"TURN: {turn_bet}")
+
+    #River
+    stack = stack - turn_bet
+    pot = pot + 2*turn_bet
+    print("---- RIVER ----")
+    print("River stacks: " + str(stack))
+    print("River Pot: " + str(pot))
 
 # Create the main application window
 root = tk.Tk()
