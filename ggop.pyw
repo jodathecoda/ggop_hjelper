@@ -36,7 +36,7 @@ def calculate_bets():
 root = tk.Tk()
 root.title("GGOP")
 root.iconbitmap("ico\\timer_small.ico")
-root.geometry("195x150")
+root.geometry("230x190")
 
 # Create entry fields
 stack_label = tk.Label(root, text="STACK:", highlightbackground="lightblue", highlightthickness=2)
