@@ -7,7 +7,8 @@ cwd = os.getcwd()
 
 def show_image(image_path):
     root = tk.Tk()
-    root.title("Image Viewer")
+    root.title("ggop")
+    root.iconbitmap("ico\\timer_small.ico")
     
     img = Image.open(image_path)
     img = ImageTk.PhotoImage(img)
